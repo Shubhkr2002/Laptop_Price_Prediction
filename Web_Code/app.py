@@ -68,10 +68,25 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
-# Load model and dataframe
-pipe = pickle.load(open('pipe.pkl', 'rb'))
-df = pickle.load(open('df.pkl', 'rb'))
+# Load model and dataframe  
+# pipe = pickle.load(open('pipe.pkl', 'rb'))
+# df = pickle.load(open('df.pkl', 'rb'))
+
+BASE_DIR = Path(__file__).parent
+
+pipe = pickle.load(open(BASE_DIR / "pipe.pkl", "rb"))
+df = pickle.load(open(BASE_DIR / "df.pkl", "rb"))
+
+
+# Set page configuration
+st.set_page_config(
+    page_title="Laptop Price Predictor",
+    page_icon="💻",
+    layout="centered",
+    initial_sidebar_state="auto"
+)
 
 # Title
 st.title("Laptop Price Predictor")
